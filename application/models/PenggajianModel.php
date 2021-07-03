@@ -6,6 +6,12 @@ class PenggajianModel extends CI_Model{
     return $this->db->get($table);
   }
 
+  public function get_data_id($table){
+    $id = $this->session->userdata('id_pegawai');
+    $this->db->where('oleh', $id);
+    return $this->db->get($table);
+  }
+
   public function get_data_in_out(){
     $this->db->select('data_in_out.*, data_pegawai.nama_pegawai as pengguna, data_gate.lokasi as gate, data_gate.kode as kode');
     $this->db->from('data_in_out');
